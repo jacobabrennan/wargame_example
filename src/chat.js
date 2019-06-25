@@ -5,38 +5,72 @@
 //-- Dependencies --------------------------------
 import React from 'react';
 
-//-- React Implementation ------------------------
+//-- Project Constants ---------------------------
+const URL_CONNECTION = `ws:${(new URL(document.URL)).host}/current`;
+
+
+//== React Implementation ======================================================
+
+//-- Component Definition & Initialization -------
 export default class Chat extends React.Component {
     constructor(props) {
         super(props);
-        const messages = [];
-        messages.push(messageGenerate("Derp", "Herp a derp."));
         this.state = {
-            messages: messages,
+            connection: null,
+            messages: [],
         };
     }
-    render(props) {
+    
+    //-- React Lifecycle Methods ---------------------
+    componentDidMount() {
+        const connection = new WebSocket(URL_CONNECTION);
+        connection.onopen    = (event => this.websocketOpen   (event));
+        connection.onclose   = (event => this.websocketClose  (event));
+        connection.onerror   = (event => this.websocketError  (event));
+        connection.onmessage = (event => this.websocketMessage(event));
+        this.setState({connection: connection});
+    }
+    render() {
         return (
             <div className="chat-main">
                 <ChatOutput messages={this.state.messages} />
-                <ChatInput />
+                <ChatInput sendMessage={this.sendMessage} />
             </div>
         );
+    }
+    
+    //-- Interaction ---------------------------------
+    sendMessage = (messageBody) => {
+        this.state.connection.send(messageBody);
+    }
+
+    //-- Websocket Event Handlers --------------------
+    websocketOpen(event) {
+        console.log('Connection Open', event);
+    }
+    websocketClose(event) {
+        console.log('Connection Closed', event);
+    }
+    websocketError(event) {
+        console.log('Websocket Error', event);
+    }
+    websocketMessage(event) {
+        console.log('Websocket Received Message', event);
+        const messages = this.state.messages.slice();
+        messages.push(JSON.parse(event.data));
+        this.setState({
+            messages: messages,
+        });
     }
 }
 
 
-//==============================================================================
+//== Subcomponents =============================================================
 
-//------------------------------------------------
-function messageGenerate(username, body) {
-    return {username, body};
-}
-
-//------------------------------------------------
 function ChatOutput(props) {
     const messagesJSX = props.messages.map(message => (
         <Message
+            key={message.id}
             username={message.username}
             body={message.body}
         />
@@ -47,8 +81,32 @@ function ChatOutput(props) {
         </div>
     );
 }
-function ChatInput(props) {
-    return <React.Fragment />
+class ChatInput extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            body: '',
+        };
+    }
+    render() {
+        return (
+            <form onSubmit={this.onSubmit}>
+                <input
+                    type="text"
+                    value={this.state.body}
+                    onChange={this.updateValue}
+                />
+            </form>
+        );
+    }
+    updateValue = (eventUpdate) => {
+        this.setState({body: eventUpdate.target.value});
+    }
+    onSubmit = (eventSubmit) => {
+        eventSubmit.preventDefault();
+        this.props.sendMessage(this.state.body);
+        this.setState({body: ''});
+    }
 }
 function Message(props) {
     return (
