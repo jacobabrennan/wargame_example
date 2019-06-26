@@ -14,6 +14,12 @@ import './redbutton.css';
 //-- Component Definition & Initialization -------
 export default class RedButton extends React.Component {
     render() {
-        return (<button className="redbutton" />);
+        return (
+            <div className="redbutton_container">
+                <span>Achtung! Klicke nicht!</span>
+                <button className="redbutton" />
+                <span>Achtung! Klicke nicht!</span>
+            </div>
+        );
     }
 }
