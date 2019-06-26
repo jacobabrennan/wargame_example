@@ -32,7 +32,7 @@ const layout = (
         </div>
         <footer>
             <div class="contact">
-                <span>Concept &amp; Web Design by <a href="http://twitter.com/AntlerPig">JacobABrennan</a></span>
+                <span>Concepto y diseño web por <a href="http://twitter.com/AntlerPig">JacobABrennan</a></span>
             </div>
         </footer>
     </React.Fragment>

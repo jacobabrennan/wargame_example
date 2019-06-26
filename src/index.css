@@ -30,7 +30,7 @@ main {
 header {
 }
 footer {
-    background: green;
+    border-top: 3px solid black;
 }
 /*@font-face {
     font-family: 'main-font';
@@ -140,4 +140,11 @@ html {
 }
 .footer-spacer, footer {
     font-size: 2rem;
+}
+footer {
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
