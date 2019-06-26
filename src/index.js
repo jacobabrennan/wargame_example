@@ -7,7 +7,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './reset.css';
 import './index.css';
-import Chat from './chat';
+import Chat from './components/chat';
+import RedButton from './components/redbutton';
 
 //-- React Implementation ------------------------
 const layout = (
@@ -25,7 +26,7 @@ const layout = (
                 </nav>
             </header>
             <div className="container">
-                <button className="redbutton" />
+                <RedButton />
                 <Chat />
             </div>
         </div>
