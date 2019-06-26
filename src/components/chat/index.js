@@ -33,7 +33,7 @@ export default class Chat extends React.Component {
     }
     render() {
         return (
-            <div className="chat-main">
+            <div className="chat_main">
                 <ChatOutput messages={this.state.messages} />
                 <ChatInput sendMessage={this.sendMessage} />
             </div>
@@ -78,7 +78,7 @@ function ChatOutput(props) {
         />
     ));
     return (
-        <div>
+        <div className="chat_output">
             {messagesJSX}
         </div>
     );
@@ -94,8 +94,10 @@ class ChatInput extends React.Component {
     }
     render() {
         return (
-            <form onSubmit={this.onSubmit}>
+            <form className="chat_input" onSubmit={this.onSubmit}>
+                <span className="chat_inputprompt">Mensaje: </span>
                 <input
+                    autofocus="true"
                     type="text"
                     value={this.state.body}
                     onChange={this.updateValue}

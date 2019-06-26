@@ -17,13 +17,13 @@ const layout = (
             <header>
                 <a href="/">
                     {/*<!--img alt="Splash Logo" src="/rsc/img/splash.png" /-->*/}
-                    <h1 class="wordmark">Red Button Chat</h1>
+                    <h1 class="wordmark">Chat de Botón</h1>
                 </a>
-                <nav>
+                {/*<nav>
                     <a href="/logout">Logout</a>
                     <a href="/login">Login</a>
                     <a href="/register">Register</a>
-                </nav>
+                </nav>*/}
             </header>
             <div className="container">
                 <RedButton />

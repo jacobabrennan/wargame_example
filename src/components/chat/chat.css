@@ -2,14 +2,57 @@
 
 /*== Chat Interface ==========================================================*/
 
+/*-- Layout ------------------------------------*/
+.chat_main {
+    background: #555;
+    width: 100%;
+    height: 100%;
+    margin-top: 3.5rem;
+    border: solid 3px #333;
+    outline: 1px black solid;
+    color: white;
+}
+.chat_main * {
+    background: #555;
+    color: white;
+    font-size: 2rem;
+    font-family: serif;
+}
+.chat_input {
+    width: 100%;
+    display: flex;
+    border-top: 1px solid black;
+}
+.chat_inputprompt {
+    padding: 0.3rem 1rem;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+.chat_input input {
+    flex-grow: 1;
+    border: 0px;
+}
+
+.chat_output {
+    width: 100%;
+    height: 50vh;
+}
+
 /*-- Messages ----------------------------------*/
 .message {
-    background: blue;
 }
 .message_username {
     font-weight: bold;
-    color: white;
+    color: red;
+    padding: 0.3rem 1rem;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
 .message_body {
-    color: lightblue;
 }

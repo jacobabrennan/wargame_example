@@ -24,7 +24,6 @@ a:any-link {
 /*== Layout ==================================================================*/
 
 html {
-    background: #ddd;
 }
 main {
 }
@@ -38,9 +37,15 @@ footer {
     src: url('/font/columbus.woff2') format('woff2'), url('/font/columbus.woff') format('woff'), url('/font/columbus.ttf') format('truetype');
 }*/
 .wordmark {
-    font-size: 3rem;
+    font-family: sans-serif;
+    font-size: 4rem;
     font-weight: bold;
     margin: 1rem 0;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
 body {
     display: flex;
@@ -53,7 +58,7 @@ header {
     width: 100%;
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid #220022;
+    border-bottom: 3px solid black;
     margin-bottom: 0.5rem;
 }
 @media (min-width: 500px) {
@@ -122,4 +127,17 @@ footer {
         max-width: 95rem;
         margin: 0 auto;
     }
+}
+
+
+/*== Theme ===================================================================*/
+
+html {
+    background: #333;
+    /* background-image: url('./bg_noise_black.png'); */
+    background-image: url('./background_4.jpg');
+    color: white;
+}
+.footer-spacer, footer {
+    font-size: 2rem;
 }

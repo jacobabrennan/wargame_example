@@ -14,6 +14,11 @@
     border-style: dashed;
     border-width: 2px 0px;
     border-color: red;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
 }
 .redbutton {
     width: 36px;
