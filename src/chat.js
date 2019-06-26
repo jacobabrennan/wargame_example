@@ -35,6 +35,7 @@ export default class Chat extends React.Component {
             <div className="chat-main">
                 <ChatOutput messages={this.state.messages} />
                 <ChatInput sendMessage={this.sendMessage} />
+                <button className="redbutton" />
             </div>
         );
     }

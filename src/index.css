@@ -18,3 +18,18 @@
 .message_body {
     color: lightblue;
 }
+
+.redbutton {
+    width: 32px;
+    height: 32px;
+    background-size: 100%;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    background-image: url('button_up.png');
+    border: none;
+    background-color: transparent;
+}
+.redbutton:active {
+    background-image: url('button_down.png');
+}
