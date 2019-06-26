@@ -1,0 +1,15 @@
+
+
+/*== Chat Interface ==========================================================*/
+
+/*-- Messages ----------------------------------*/
+.message {
+    background: blue;
+}
+.message_username {
+    font-weight: bold;
+    color: white;
+}
+.message_body {
+    color: lightblue;
+}

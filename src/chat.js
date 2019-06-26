@@ -1,9 +1,10 @@
 
 
-//==============================================================================
+//== Chat System ===============================================================
 
 //-- Dependencies --------------------------------
 import React from 'react';
+import './chat.css';
 
 //-- Project Constants ---------------------------
 const URL_CONNECTION = `ws:${(new URL(document.URL)).host}/current`;
@@ -68,6 +69,7 @@ export default class Chat extends React.Component {
 
 //== Subcomponents =============================================================
 
+//-- Output - Message Display Area ---------------
 function ChatOutput(props) {
     const messagesJSX = props.messages.map(message => (
         <Message
@@ -82,6 +84,8 @@ function ChatOutput(props) {
         </div>
     );
 }
+
+//-- Input - Message composition & submission ----
 class ChatInput extends React.Component {
     constructor(props) {
         super(props);
@@ -109,6 +113,8 @@ class ChatInput extends React.Component {
         this.setState({body: ''});
     }
 }
+
+//-- Message - Individual chat line --------------
 function Message(props) {
     return (
         <div className="message">
