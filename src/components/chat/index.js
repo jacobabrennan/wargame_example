@@ -69,19 +69,44 @@ export default class Chat extends React.Component {
 //== Subcomponents =============================================================
 
 //-- Output - Message Display Area ---------------
-function ChatOutput(props) {
-    const messagesJSX = props.messages.map(message => (
-        <Message
-            key={message.id}
-            username={message.username}
-            body={message.body}
-        />
-    ));
-    return (
-        <div className="chat_output">
-            {messagesJSX}
-        </div>
-    );
+class ChatOutput extends React.Component {
+    constructor(props) {
+        super(props);
+        this.displayReference = React.createRef();
+    }
+    render() {
+        // Determine if display is scrolled to bottom
+        let scrollAtBottom = true;
+        const displayOld = this.displayReference.current;
+        if (displayOld) {
+            const scrollDelta = displayOld.scrollHeight - displayOld.scrollTop;
+            if(scrollDelta !== displayOld.clientHeight) {
+                scrollAtBottom = false;
+            }
+        }
+        // Keep scroll at bottom after render
+        if (scrollAtBottom) {
+            requestAnimationFrame(() => {
+                const display = this.displayReference.current;
+                display.scrollTop = display.scrollHeight;
+            });
+        }
+        // Compile messages into React components
+        const messagesJSX = this.props.messages.map(message => (
+            <Message
+                key={message.id}
+                username={message.username}
+                body={message.body}
+            />
+        ));
+        // Render display area with messages
+        return (
+            <div ref={this.displayReference} className="chat_output">
+                <div className="chat_outputbuffer" />
+                {messagesJSX}
+            </div>
+        );
+    }
 }
 
 //-- Input - Message composition & submission ----
