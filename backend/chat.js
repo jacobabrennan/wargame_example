@@ -24,11 +24,13 @@ const chat = module.exports = {
         // Store client
         this.clients[clientNew.id] = clientNew;
         // Add event listeners to webSocket connection
-        webSocket.on(SOCKET_ERROR, (data) => {
-            console.log('Error:', data);
-        });
         webSocket.on(SOCKET_MESSAGE, (data) => {
-            this.messageReceive(clientNew, data);
+            console.log(data)
+            data = JSON.parse(data);
+            const chatBody = data.chat;
+            if (chatBody) {
+                this.messageReceive(clientNew, chatBody);
+            }
         });
         webSocket.on(SOCKET_CLOSE, (data) => {
             this.clientRemove(clientNew);
@@ -49,10 +51,11 @@ const chat = module.exports = {
         // Add message to messages
         this.messages.push(message);
         // Broadcast message to each client
-        const messageString = JSON.stringify(message)
+        const data = {chat: message};
+        const dataString = JSON.stringify(data)
         Object.getOwnPropertySymbols(this.clients).forEach(symbol => {
             const client = this.clients[symbol];
-            client.connection.send(messageString);
+            client.connection.send(dataString);
         });
     },
 };

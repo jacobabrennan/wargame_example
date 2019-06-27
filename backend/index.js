@@ -6,6 +6,7 @@
 const express = require('express');
 const path = require('path');
 const chat = require('./chat.js');
+const button = require('./button.js');
 
 //-- Project Constants ---------------------------
 const URL_CLIENT = '/';
@@ -20,6 +21,7 @@ router.ws(URL_CHAT, function(webSocket, request) {
     const user = request.auth;
     if (!user) { return;}
     chat.clientAdd(user.id, user.username, webSocket);
+    button.watchUser(user.id, webSocket);
 });
 
 //-- Serve React Client --------------------------
