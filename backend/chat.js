@@ -25,7 +25,6 @@ const chat = module.exports = {
         this.clients[clientNew.id] = clientNew;
         // Add event listeners to webSocket connection
         webSocket.on(SOCKET_MESSAGE, (data) => {
-            console.log(data)
             data = JSON.parse(data);
             const chatBody = data.chat;
             if (chatBody) {

@@ -5,9 +5,10 @@
 //-- Dependencies --------------------------------
 import React from 'react';
 import './chat.css';
+import language from '../../language.js';
 
 //-- Project Constants ---------------------------
-const TEXT_COMMAND_PROMPT = 'Mensaje: ';
+const TEXT_COMMAND_PROMPT = language.COMMAND_PROMPT;
 
 
 //== Main Component - Full Chat Client =========================================

@@ -6,10 +6,14 @@
 import React from 'react';
 import './client.css';
 import Chat from '../chat';
+import language from '../../language';
 // import RedButton from '../redbutton';
 
-const TEXT_PROJECT_TITLE = 'Chat de Botón';
-const TEXT_ATTRIBUTION = 'Concepto y diseño web por';
+//-- Project Constants ---------------------------
+const URL_ATTRIBUTION = 'http://twitter.com/AntlerPig';
+const URL_ATTRIBUTION_TEXT = 'JacobABrennan'
+const TEXT_PROJECT_TITLE = language.PROJECT_TITLE;
+const TEXT_ATTRIBUTION = language.ATTRIBUTION;
 
 //-- React Implementation ------------------------
 export default class Client extends React.Component {
@@ -33,7 +37,7 @@ export default class Client extends React.Component {
                 </main>
                 <footer>
                     <div class="contact">
-                        <span>{TEXT_ATTRIBUTION} <a href="http://twitter.com/AntlerPig">JacobABrennan</a></span>
+                        <span>{TEXT_ATTRIBUTION} <a href={URL_ATTRIBUTION}>{URL_ATTRIBUTION_TEXT}</a></span>
                     </div>
                 </footer>
             </div>
