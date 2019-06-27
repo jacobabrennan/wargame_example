@@ -34,4 +34,14 @@
 }
 .redbutton:active {
     background-image: url('./button_down.png');
+
+}
+.redbutton_container.pressed {
+    color: yellow;
+    border-color: yellow;
+    border-style: solid;
+
+}
+.redbutton_container.pressed .redbutton {
+    background-image: url('./button_down.png');
 }

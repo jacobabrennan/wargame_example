@@ -24,6 +24,10 @@ const button = module.exports = {
         connectionManager.broadcast(data);
     },
     configureClient(clientNew) {
+        if (this.pressed) {
+            const data = {button: true};
+            clientNew.connection.send(JSON.stringify(data));
+        }
         clientNew.connection.on(SOCKET_MESSAGE, (data) => {
             data = JSON.parse(data);
             if (data.button) {

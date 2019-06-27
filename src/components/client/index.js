@@ -5,8 +5,8 @@
 //-- Dependencies --------------------------------
 import React from 'react';
 import './client.css';
-import Chat from '../chat';
 import language from '../../language';
+import Chat from '../chat';
 import RedButton from '../redbutton';
 
 //-- Project Constants ---------------------------
@@ -19,8 +19,13 @@ const TEXT_ATTRIBUTION = language.ATTRIBUTION;
 export default class Client extends React.Component {
     constructor(props) {
         super(props);
+        // Setup websocket connection
+        const connection = new WebSocket(props.connectTo)
+        connection.addEventListener('message', this.handleMessage);
+        // Do React initialization
         this.state = {
-            connection: new WebSocket(props.connectTo),
+            connection: connection,
+            pressed: false,
         };
     }
     render() {
@@ -32,7 +37,10 @@ export default class Client extends React.Component {
                     </a>
                 </header>
                 <main>
-                    <RedButton connection={this.state.connection} />
+                    <RedButton
+                        connection={this.state.connection}
+                        pressed={this.state.pressed}
+                    />
                     <Chat connection={this.state.connection} />
                 </main>
                 <footer>
@@ -42,5 +50,13 @@ export default class Client extends React.Component {
                 </footer>
             </div>
         );
+    }
+    handleMessage = (messageEvent) => {
+        // Listen for button press events
+        const data = JSON.parse(messageEvent.data);
+        const button = data.button;
+        if (!button) { return;}
+        //
+        this.setState({pressed: true});
     }
 }
