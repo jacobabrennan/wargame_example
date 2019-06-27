@@ -1,27 +1,33 @@
 
 
-//==============================================================================
+//== Test Wargame Module =======================================================
 
 //-- Dependencies --------------------------------
 const express = require('express');
 const path = require('path');
+const connectionManager = require('./connection_manager.js');
 const chat = require('./chat.js');
 const button = require('./button.js');
 
 //-- Project Constants ---------------------------
 const URL_CLIENT = '/';
-const URL_CHAT = '/';
 const PATH_BUILD = 'build';
 
 //-- Configure & Export Router -------------------
 const router = module.exports = express.Router();
 
-//-- Handle Chat (via websockets) ----------------
-router.ws(URL_CHAT, function(webSocket, request) {
+//-- Attach Client (via websockets) --------------
+router.ws(URL_CLIENT, function (webSocket, request) {
+    // Ensure user info is present on request (user logged in)
     const user = request.auth;
     if (!user) { return;}
-    chat.clientAdd(user.id, user.username, webSocket);
-    button.watchUser(user.id, webSocket);
+    // Create websocket connection
+    const clientNew = connectionManager.clientAdd(
+        user.id, user.username, webSocket,
+    );
+    // Attach sub-modules
+    chat.configureClient(clientNew)
+    button.configureClient(clientNew);
 });
 
 //-- Serve React Client --------------------------

@@ -7,7 +7,7 @@ import React from 'react';
 import './client.css';
 import Chat from '../chat';
 import language from '../../language';
-// import RedButton from '../redbutton';
+import RedButton from '../redbutton';
 
 //-- Project Constants ---------------------------
 const URL_ATTRIBUTION = 'http://twitter.com/AntlerPig';
@@ -32,7 +32,7 @@ export default class Client extends React.Component {
                     </a>
                 </header>
                 <main>
-                    {/* <RedButton connection={this.state.connection} /> */}
+                    <RedButton connection={this.state.connection} />
                     <Chat connection={this.state.connection} />
                 </main>
                 <footer>

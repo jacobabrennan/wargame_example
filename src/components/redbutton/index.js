@@ -10,25 +10,19 @@ import language from '../../language.js';
 //-- Project Constants ---------------------------
 const TEXT_BUTTON_WARNING = language.BUTTON_WARNING;
 
-
-//== React Implementation ======================================================
-
-//-- Component Definition & Initialization -------
-export default class RedButton extends React.Component {
-    
-    //-- React Lifestyle -----------------------------
-    render() {
-        return (
-            <div className="redbutton_container">
-                <span>{TEXT_BUTTON_WARNING}</span>
-                <button className="redbutton" onClick={this.handleClick} />
-                <span>{TEXT_BUTTON_WARNING}</span>
-            </div>
-        );
+//-- Main React Component ------------------------
+export default function (props) {
+    function handleClick() {
+        const data = {button: true}
+        props.connection.send(JSON.stringify(data));
     }
-    
-    //-- Interaction ---------------------------------
-    handleClick = (eventClick) => {
-        
-    }
+    return (
+        <div className="redbutton_container">
+            <span>{TEXT_BUTTON_WARNING}</span>
+            <button
+                className="redbutton"
+                onClick={handleClick} />
+            <span>{TEXT_BUTTON_WARNING}</span>
+        </div>
+    );
 }
