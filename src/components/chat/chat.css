@@ -6,11 +6,13 @@
 .chat_main {
     background: #555;
     width: 100%;
-    height: 100%;
     margin-top: 3.5rem;
     border: solid 3px #333;
     outline: 1px black solid;
     color: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
 }
 .chat_main input {
     background: #555;
@@ -38,12 +40,13 @@
 
 .chat_output {
     width: 100%;
-    height: 50vh;
+    flex-grow: 1;
     overflow-y: auto;
     display: flex;
     flex-direction: column;
     /* justify-content: flex-end; */
     /* The above is bugged. The below outputbuffer is a workaround. */
+    flex-grow: 1;
 }
 .chat_outputbuffer {
     flex: 1 1 auto;

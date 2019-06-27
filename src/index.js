@@ -12,29 +12,27 @@ import RedButton from './components/redbutton';
 
 //-- React Implementation ------------------------
 const layout = (
-    <React.Fragment>
-        <div class="footer-spacer">
-            <header>
-                <a href="/">
-                    {/*<!--img alt="Splash Logo" src="/rsc/img/splash.png" /-->*/}
-                    <h1 class="wordmark">Chat de Botón</h1>
-                </a>
-                {/*<nav>
-                    <a href="/logout">Logout</a>
-                    <a href="/login">Login</a>
-                    <a href="/register">Register</a>
-                </nav>*/}
-            </header>
-            <div className="container">
-                <RedButton />
-                <Chat />
-            </div>
-        </div>
+    <div className="container">
+        <header>
+            <a href="/">
+                {/*<!--img alt="Splash Logo" src="/rsc/img/splash.png" /-->*/}
+                <h1 class="wordmark">Chat de Botón</h1>
+            </a>
+            {/*<nav>
+                <a href="/logout">Logout</a>
+                <a href="/login">Login</a>
+                <a href="/register">Register</a>
+            </nav>*/}
+        </header>
+        <main>
+            <RedButton />
+            <Chat />
+        </main>
         <footer>
             <div class="contact">
                 <span>Concepto y diseño web por <a href="http://twitter.com/AntlerPig">JacobABrennan</a></span>
             </div>
         </footer>
-    </React.Fragment>
+    </div>
 );
 ReactDOM.render(layout, document.getElementById('root'));
