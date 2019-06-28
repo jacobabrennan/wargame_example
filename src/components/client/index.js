@@ -1,6 +1,15 @@
 
 
-//== Red Button Website Client =================================================
+/*== Red Button Website Client =================================================
+
+This module exports a React component, the Client, which defines the layout of
+the entire Red Button website. The main features of this client are a live
+WebSockets connect, the chat area, and the button itself.
+
+    Client props:
+        connectTo (string, mandatory): a URL
+
+*/
 
 //-- Dependencies --------------------------------
 import React from 'react';

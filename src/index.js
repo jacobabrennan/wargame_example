@@ -1,6 +1,11 @@
 
 
-//== Website Initialization ====================================================
+/*== Website Initialization ====================================================
+
+This module is the entry point for the React front end. It mounts a Client onto
+the body element (root) and passes a connection URL to that client.
+
+*/
 
 //-- Dependencies --------------------------------
 import React from 'react';

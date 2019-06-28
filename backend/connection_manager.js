@@ -1,6 +1,14 @@
 
 
-//== Connection Manager ========================================================
+/*== Connection Manager ========================================================
+
+This module provides a connectionManager opject to handle WebSocket connections.
+Each connection is associated with a unique symbol, and broadcasts can be sent
+to all users at once. Notably, a single user can have multiple connections (such
+as a single user with the website open in multiple tabs). The connectionManager
+is used by both the Chat and Button modules.
+
+*/
 
 //-- Project Constants ---------------------------
 const SOCKET_CLOSE   = 'close';

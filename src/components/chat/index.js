@@ -1,6 +1,28 @@
 
 
-//== Chat System ===============================================================
+/*== Chat System ===============================================================
+
+This module exports a React component, Chat, which is a simple chat room. The
+chat room receives and displays messages from a connection provided via props,
+and sends messages out via the same connection.
+
+    Chat props:
+        connection(mandatory): a WebSocket object
+
+The Chat component uses three subcomponents also defined within this file, but
+these components are not exported. The Chat component can be used fully without
+any knowledge of the subcomponents.
+
+    ChatOutput props:
+        messages (array, mandatory): an array of messages
+    ChatInput props:
+        sendMessage (function, mandatory): the sendMessage method of Chat
+    Message props:
+        username (string, mandatory): The name of the sender of the chat message
+        body (string, mandatory): The body of the chat message
+
+
+*/
 
 //-- Dependencies --------------------------------
 import React from 'react';

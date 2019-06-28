@@ -2,6 +2,10 @@
 
 /*== Chat Room =================================================================
 
+This module provides functionality for a simple chat room. It handles receiving
+and formatting of chat messages, and sends them to the connection manager for
+broadcast.
+
 */
 
 //-- Dependencies --------------------------------

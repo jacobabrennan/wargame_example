@@ -2,6 +2,11 @@
 
 /*== Red Button ================================================================
 
+This module defines the backend handler and state for a "red button". This
+button is the main component of the test, which measures how long the website
+can remain up without the button being pressed. Once pressed, this button
+remains pressed for everyone, for the life of the server.
+
 */
 
 //-- Dependencies --------------------------------

@@ -1,6 +1,19 @@
 
 
-//== Chat System ===============================================================
+/*== Red Button ================================================================
+
+This module exports a React Component, RedButton, which displays a red clickable
+button. This button communicates with the server to display the test's current
+status: pressed or unpressed. Upon pressing the botton, a message is sent to the
+test server informing all users that the botton has been pressed, and the test
+has ended. The button also receives this status from the server, though props,
+and displays to all users the current pressed status.
+
+    RedButton props:
+        connection (mandatory): a WebSocket object
+        pressed (boolean, mandatory): the pressed status of the test
+
+*/
 
 //-- Dependencies --------------------------------
 import React from 'react';

@@ -1,6 +1,16 @@
 
 
-//== Test Wargame Module =======================================================
+/*== Test Wargame Module =======================================================
+
+This is the server backend for the RedButton test wargame. It must be included
+in the "/current" directory of the Social Media Wargames server in order to run.
+Also, the "build" directory must also be copied to "/current" in order to serve
+the react front end.
+
+This module serves a simple chat client with a big red button, and handles
+WebSockets communications between those clients.
+
+*/
 
 //-- Dependencies --------------------------------
 const express = require('express');
